@@ -157,6 +157,7 @@ sed -i "s/DRAW_INTERVAL=60/DRAW_INTERVAL=$drawinterval/" /etc/default/graphs1090
 read -p "Installing web dashboard at http://localhost/dashboard/ ?: " yn
 cp -R dashboard/ /var/www/html/
 cp scripts/*.sh
+apt-get install ansilove -y
 #add cronjob here
 
 #fully update system to finish
