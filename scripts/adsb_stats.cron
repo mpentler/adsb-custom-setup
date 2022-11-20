@@ -1,0 +1,1 @@
+*/30 * * * * root /usr/bin/bash /home/pi/stats.sh

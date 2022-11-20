@@ -156,9 +156,10 @@ sed -i "s/DRAW_INTERVAL=60/DRAW_INTERVAL=$drawinterval/" /etc/default/graphs1090
 #make webpage - perhaps download from my gists?
 read -p "Installing web dashboard at http://localhost/dashboard/ ?: " yn
 cp -R dashboard/ /var/www/html/
-cp scripts/*.sh
+cp scripts/*.sh /home/pi/
 apt-get install ansilove -y
-#add cronjob here
+cp adsb-stats.cron /etc/cron.d/adsb_stats
+sudo systemctl restart cron
 
 #fully update system to finish
 echo "*** Running one last full system update...\n"
