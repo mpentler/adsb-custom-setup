@@ -166,6 +166,8 @@ while true; do
   case $yn in
     [yY]* ) mkdir /var/www/html/adsbdashboard
     cp dashboard/* /var/www/html/adsbdashboard/
+    # add $ptrackshrs entry to web page
+    sed -i "s/Last 8h Tracks/Last $ptrackshrs\h Tracks/" /var/www/html/index.html
     cp scripts/*.sh /home/pi/
     apt-get install ansilove -y
     cp adsb-stats.cron /etc/cron.d/adsb_stats
