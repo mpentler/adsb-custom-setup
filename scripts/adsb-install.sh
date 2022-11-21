@@ -5,10 +5,10 @@
 echo "*** Completing headless Raspbian setup tasks (settings config and software removal..."
 
 #disable HDMI output
+read -p "Disable HDMI in /etc/rc.local? (y/n): " yn
 while true; do
-  read -p "Disable HDMI in /etc/rc.local? (y/n): " yn
   case $yn in
-    [yY]* ) sed -i '$i \/usr/bin/tvservice -o\n' /etc/rc.local; break ;;
+    [yY]* ) sed -i '$i \/usr/bin/tvservice -o\n' /etc/rc.local ; break ;;
     [nN]* ) echo "skipping..." ; break ;;
     *) echo 'Invalid input' >&2 ;;
   esac
@@ -16,8 +16,14 @@ done
 
 #change CPU governor to ondemand (can disable raspi-config.service after this, as it sets performance mode)
 #does this need to be a user choice?
-echo "Setting CPU governor to ondemand mode on boot"
-sed -i '$i \echo "ondemand" | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' /etc/rc.local
+read -p "Do you want the CPU governor set to ondemand or performance mode? (o/p): " cpugov
+while true; do
+  case $cpugov in
+    [oO]* ) sed -i '$i \echo "ondemand" | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' /etc/rc.local ; break ;;
+    [pP]* ) sed -i '$i \echo "performance" | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' /etc/rc.local ; break ;;
+    *) echo 'Invalid input' >&2 ;;
+  esac
+done
 
 #disable and uninstall Bluetooth software
 read -p "Disable and uninstall Bluetooth software? (y/n): " yn
@@ -36,11 +42,11 @@ done
 #disable other unneeded services
 echo "Disabling some other unneeded services..."
 systemctl disable avahi-daemon.service
-systemctl disable avahi-daemon.socket
-systemctl disable ModemManager.service
+systemctl disable avahi-daemon.socket #disables *.local hostname ability - ip access only!
+systemctl disable ModemManager.service #disables this modem service which is totally unneeded
 systemctl disable triggerhappy.service
-systemctl disable triggerhappy.socket
-systemctl disable raspi-config.service
+systemctl disable triggerhappy.socket #some button library that is usually unneeded
+systemctl disable raspi-config.service #this service sets the CPU governor on boot, we're overriding that
 
 #switch sshd to on-demand setup
 echo "Switching to on-demand SSH daemon rather than always-on..."
@@ -48,12 +54,13 @@ systemctl disable ssh.service
 systemctl enable ssh.socket
 
 #make changes to /boot/config.txt to enable, disable, or edit certain options - can this be done in a better way?
+echo "Setting some /boot/config.txt options for headless operation..."
 echo -e "enable_uart=0\ngpu_mem=16\nenable_tvout=0" >> /boot/config.txt
 
 #gather some information to be used later (but not yet!)
-read -p "What is the decimal X longitude coordinate of the antenna (to 4 decimal places)? :" loncoord
-read -p "What is the decimal Y latidude coordinate of the antenna (to 4 decimal places)? :" latcoord
-read -p "How high is the antenna above the ground in metres?: " antalt
+# read -p "What is the decimal X longitude coordinate of the antenna (to 4 decimal places)? :" loncoord
+# read -p "What is the decimal Y latidude coordinate of the antenna (to 4 decimal places)? :" latcoord
+# read -p "How high is the antenna above the ground in metres?: " antalt
 
 #install dump1090-fa, tar1090, and graphs1090 from wiedehopf's excellent scripts
 echo "*** Installing dump1090-fa, graphs1090 and tar1090...\n"
@@ -80,7 +87,7 @@ while true; do
   esac
 done
 
-#FlightRadar24 (need to somehow disable MLAT!)
+#FlightRadar24 (need to somehow check for and disable MLAT if it isn't the default!)
 read -p "Install FlightRadar 24? (y/n): " yn
 while true; do
   case $yn in
@@ -142,11 +149,11 @@ echo "*** All feeders complete - remember to configure them all separately if re
 echo "*** Configuring some app-specific settings...\n"
 
 #change dump1090-fa settings (gain etc)
-read -p "Select SLOW_CPU setting (yes/no/auto): " slowcpu
+read -p "Select dump1090-fa SLOW_CPU setting (yes/no/auto): " slowcpu
 sed -i "s/SLOW_CPU=auto/SLOW_CPU=$slowcpu/" /etc/default/dump1090-fa
 
 #change tar1090 settings (customise view)
-read -p "How long a tar1090 ptracks history would you like (in hours)?: " ptrackshrs
+read -p "How long should tar1090 ?ptracks display store history?: " ptrackshrs
 sed -i "s/PTRACKS=8/PTRACKS=$ptrackshrs/" /etc/default/tar1090
 
 #prompt user for some graphs1090 settings
@@ -155,12 +162,18 @@ sed -i "s/DRAW_INTERVAL=60/DRAW_INTERVAL=$drawinterval/" /etc/default/graphs1090
 
 #make webpage - perhaps download from my gists?
 read -p "Installing web dashboard at http://localhost/dashboard/ ?: " yn
-mkdir /var/www/html/adsbdashboard
-cp dashboard/* /var/www/html/adsbdashboard/
-cp scripts/*.sh /home/pi/
-apt-get install ansilove -y
-cp adsb-stats.cron /etc/cron.d/adsb_stats
-sudo systemctl restart cron
+while true; do
+  case $yn in
+    [yY]* ) mkdir /var/www/html/adsbdashboard
+    cp dashboard/* /var/www/html/adsbdashboard/
+    cp scripts/*.sh /home/pi/
+    apt-get install ansilove -y
+    cp adsb-stats.cron /etc/cron.d/adsb_stats
+    sudo systemctl restart cron ; break ;;
+    [nN]* ) echo "skipping..." ; break ;;
+    *) echo 'Invalid input' >&2 ;;
+  esac
+done
 
 #fully update system to finish
 echo "*** Running one last full system update...\n"
