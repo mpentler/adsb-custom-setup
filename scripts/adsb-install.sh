@@ -161,7 +161,7 @@ read -p "How long would you like between graphs1090 redraws (in seconds)?: " dra
 sed -i "s/DRAW_INTERVAL=60/DRAW_INTERVAL=$drawinterval/" /etc/default/graphs1090
 
 #install web dashboard
-read -p "Installing web dashboard at http://ip.address/dashboard/ ?: " yn
+read -p "Installing web dashboard at http://ip.address/adsbdashboard/ ?: " yn
 while true; do
   case $yn in
     [yY]* ) mkdir /var/www/html/adsbdashboard
