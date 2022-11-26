@@ -42,7 +42,7 @@ done
 #disable other unneeded services
 echo "Disabling some other unneeded services..."
 systemctl disable avahi-daemon.service
-systemctl disable avahi-daemon.socket #disables *.local hostname ability - ip access only!
+systemctl disable avahi-daemon.socket #disables *.local hostname ability - ip access only! You may want to disable this
 systemctl disable ModemManager.service #disables this modem service which is totally unneeded
 systemctl disable triggerhappy.service
 systemctl disable triggerhappy.socket #some button library that is usually unneeded
@@ -160,8 +160,8 @@ sed -i "s/PTRACKS=8/PTRACKS=$ptrackshrs/" /etc/default/tar1090
 read -p "How long would you like between graphs1090 redraws (in seconds)?: " drawinterval
 sed -i "s/DRAW_INTERVAL=60/DRAW_INTERVAL=$drawinterval/" /etc/default/graphs1090
 
-#make webpage - perhaps download from my gists?
-read -p "Installing web dashboard at http://localhost/dashboard/ ?: " yn
+#install web dashboard
+read -p "Installing web dashboard at http://ip.address/dashboard/ ?: " yn
 while true; do
   case $yn in
     [yY]* ) mkdir /var/www/html/adsbdashboard
