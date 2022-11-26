@@ -16,3 +16,15 @@ html {
   padding-top: 10px;
 }
 
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+.dark-mode a {
+  color: yellow;
+}
+
+.dark-mode a:visited {
+  color: lightgreen;
+}

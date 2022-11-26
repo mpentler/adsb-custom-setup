@@ -22,6 +22,20 @@ $(function () {
     }       
   });
 });
+
+function darkLightSwitch() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  changeImage();
+}
+
+function changeImage() {
+    if (document.getElementById("top-icon").src == "http://192.168.0.31/apple-touch-icon.png"){
+        document.getElementById("top-icon").src = "http://192.168.0.31/dark-icon.png";
+    } else {
+        document.getElementById("top-icon").src = "http://192.168.0.31/apple-touch-icon.png";
+    }
+}
 </script>
 
 <meta name="apple-mobile-web-app-title" content="ADS-B Dashboard">
@@ -39,7 +53,7 @@ ADS-B Dashboard
 
 <div class="container">
   <div class="top-banner">
-    <h1><img src="/apple-touch-icon.png" width=100 height=100 style="vertical-align: middle">ADS-B Dashboard</h1>
+    <h1><img id="top-icon" src="/apple-touch-icon.png" width="100" height="100" style="vertical-align: middle"/>ADS-B Dashboard</h1>
   </div>
 
 <div id="content">
@@ -58,7 +72,7 @@ ADS-B Dashboard
 
 <div id="uptime">
 Uptime:
- 11:30:01 up 6 days, 11:40,  1 user,  load average: 0.58, 0.68, 0.72
+ 13:30:01 up 6 days, 13:40,  1 user,  load average: 0.54, 0.61, 0.63
 </div>
 
 <h2>Decoders/Stats</h2>
@@ -87,7 +101,9 @@ Last 24h Tracks
 <li>RadarBox: <a href="https://www.radarbox.com/stations/EXTRPI002487">Stats</a></li>
 </ul>
 
-<img src="throttled.png">
+<img src="/throttled.png"/>
+
+<button onclick="darkLightSwitch()">Dark/Light Switch</button>
 
 </div>
 
