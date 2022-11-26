@@ -171,6 +171,9 @@ while true; do
     cp scripts/*.sh /home/pi/
     apt-get install ansilove -y
     cp adsb-stats.cron /etc/cron.d/adsb_stats
+    cp adsbdashboard.lighttpd /etc/lighttpd/conf-available/96-adsbdashboard.conf
+    lighttpd-enable-mod adsbdashboard
+    sudo systemctl restart lighttpd.service
     sudo systemctl restart cron ; break ;;
     [nN]* ) echo "skipping..." ; break ;;
     *) echo 'Invalid input' >&2 ;;

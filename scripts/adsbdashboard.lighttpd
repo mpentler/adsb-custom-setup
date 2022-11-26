@@ -1,0 +1,21 @@
+url.redirect += (
+  "^/fr24-status/$" => "/fr24-status"
+)
+
+$HTTP["url"] =~ "^/fr24-status" {
+  $HTTP["host"] =~ ".*" {
+    url.redirect = ( "^/(.*)" => "http://%0:8754" )
+    url.redirect-code = 302
+  }
+}
+
+url.redirect += (
+  "^/planefinder/$" => "/planefinder"
+)
+
+$HTTP["url"] =~ "^/planefinder" {
+  $HTTP["host"] =~ ".*" {
+    url.redirect = ( "^/(.*)" => "http://%0:30053" )
+    url.redirect-code = 302
+  }
+}
