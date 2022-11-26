@@ -12,6 +12,8 @@ It will also install a web frontend for accessing everything and viewing all of 
 ## Installation
 Clone the repo first to your /home/pi folder (change the script if your username is something different) and then:
 
+Look at the scripts and edit anything else you want. You should also edit my stupidly hard-coded links in tbe web page. If you want to help me make that more configurable then please do.
+
 `sudo adsb-install.sh`
 
 Follow the prompts as you go for choosing options and feeders. None of the scripts are very complex if you have a look at them, but as I made this for myself I'm not hugely interested in documenting things more than this right now, sorry!
