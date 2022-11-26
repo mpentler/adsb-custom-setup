@@ -27,20 +27,23 @@ function darkLightSwitch() {
   if (darksetting == 0) {
     darksetting = 1;
     document.body.classList.add("dark-mode");
-    document.getElementById("top-icon").src = "http://192.168.0.31/dark-icon.png";
+    document.getElementById("top-icon").classList.add("dark-icon");
+    document.getElementById("top-icon").classList.remove("light-icon");
   }
   else {
     darksetting = 0;
     document.body.classList.remove("dark-mode");
-    document.getElementById("top-icon").src = "http://192.168.0.31/apple-touch-icon.png";
+    document.getElementById("top-icon").classList.remove("dark-icon");
+    document.getElementById("top-icon").classList.add("light-icon");
   }
   localStorage.setItem('dark',darksetting);
 }
 
 function checkDark() {
   if(darksetting == 1) {
-      document.body.classList.add("dark-mode");
-      document.getElementById("top-icon").src = "http://192.168.0.31/dark-icon.png";
+    document.body.classList.add("dark-mode");
+    document.getElementById("top-icon").classList.add("dark-icon");
+    document.getElementById("top-icon").classList.remove("light-icon");
   }
 }
 
@@ -64,9 +67,9 @@ ADS-B Dashboard
 
 <body>
 
-<div class="container">
-  <div class="top-banner">
-    <h1><img id="top-icon" src="/apple-touch-icon.png" width="100" height="100" style="vertical-align: middle"/>ADS-B Dashboard</h1>
+<div id="container">
+  <div id="top-banner">
+    <h1><img id="top-icon" class="light-icon"/>ADS-B Dashboard</h1>
   </div>
 
   <div id="content">
@@ -83,9 +86,9 @@ ADS-B Dashboard
     </div>
     <!-- End Markup for xpull plugin -->
 
-    <div class="uptime">
+    <div id="uptime">
 Uptime:
-Will update on next refresh...
+Will update on first refresh...
     </div>
 
 <h2>Decoders/Stats</h2>
@@ -116,10 +119,10 @@ Last 24h Tracks
 
     <img src="/throttled.png"/>
 
-    <button id="darkMode" onclick="darkLightSwitch()">Dark/Light Switch</button>
+    <button onclick="darkLightSwitch()">Dark/Light Switch</button>
 
-    <div class="githublink">
-      <a href="https://github.com/mpentler/adsb-custom-setup/">GitHub Page</a>
+    <div id="githublink">
+    <a href="https://github.com/mpentler/adsb-custom-setup/">GitHub Page</a>
     </div>
 
   </div>

@@ -8,12 +8,26 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
-.top-banner {
+#top-banner {
   text-align: center;
 }
 
-.uptime {
+#uptime {
   padding-top: 10px;
+}
+
+.light-icon {
+  content:url("/apple-touch-icon.png");
+}
+
+.dark-icon {
+  content:url("/dark-icon.png");
+}
+
+#top-icon {
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
 }
 
 .dark-mode {
@@ -29,6 +43,6 @@ html {
   color: lightgreen;
 }
 
-.githublink {
+#githublink {
   font-style: italic;
 }
