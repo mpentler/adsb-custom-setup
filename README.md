@@ -9,10 +9,10 @@ That last point is important: this WILL adjust system files and you should inspe
 
 It will also install a web frontend for accessing everything and viewing all of the stats and traffic to the port 80 lighttpd server.
 
-# Installation
+## Installation
 
 Clone the repo first to your /home/pi folder (change the script if your username is something different) and then:
 
-sudo adsb-install.sh
+`sudo adsb-install.sh`
 
-Follow the prompts as you go for choosing options and feeders. None of the scripts are very complex if you have a look at them.
+Follow the prompts as you go for choosing options and feeders. None of the scripts are very complex if you have a look at them, but as I made this for myself I'm not hugely interested in documenting things more than this right now, sorry!
