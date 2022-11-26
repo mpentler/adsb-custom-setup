@@ -24,18 +24,31 @@ $(function () {
 });
 
 function darkLightSwitch() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-  changeImage();
+  if (darksetting == 0) {
+    darksetting = 1;
+    document.body.classList.add("dark-mode");
+    document.getElementById("top-icon").src = "http://192.168.0.31/dark-icon.png";
+  }
+  else {
+    darksetting = 0;
+    document.body.classList.remove("dark-mode");
+    document.getElementById("top-icon").src = "http://192.168.0.31/apple-touch-icon.png";
+  }
+  localStorage.setItem('dark',darksetting);
 }
 
-function changeImage() {
-    if (document.getElementById("top-icon").src == "http://192.168.0.31/apple-touch-icon.png"){
-        document.getElementById("top-icon").src = "http://192.168.0.31/dark-icon.png";
-    } else {
-        document.getElementById("top-icon").src = "http://192.168.0.31/apple-touch-icon.png";
-    }
+function checkDark() {
+  if(darksetting == 1) {
+      document.body.classList.add("dark-mode");
+      document.getElementById("top-icon").src = "http://192.168.0.31/dark-icon.png";
+  }
 }
+
+let darksetting = localStorage.getItem('dark');
+
+document.addEventListener('DOMContentLoaded', () => {
+    checkDark();
+});
 </script>
 
 <meta name="apple-mobile-web-app-title" content="ADS-B Dashboard">
@@ -72,7 +85,7 @@ ADS-B Dashboard
 
 <div id="uptime">
 Uptime:
- 13:30:01 up 6 days, 13:40,  1 user,  load average: 0.54, 0.61, 0.63
+ 16:00:01 up 6 days, 16:10,  1 user,  load average: 0.64, 0.63, 0.59
 </div>
 
 <h2>Decoders/Stats</h2>
@@ -103,7 +116,7 @@ Last 24h Tracks
 
 <img src="/throttled.png"/>
 
-<button onclick="darkLightSwitch()">Dark/Light Switch</button>
+<button id="darkMode" onclick="darkLightSwitch()">Dark/Light Switch</button>
 
 </div>
 
