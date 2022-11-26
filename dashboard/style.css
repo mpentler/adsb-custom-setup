@@ -1,0 +1,18 @@
+html {
+  font-family: sans-serif
+}
+
+#content {
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.top-banner {
+  text-align: center;
+}
+
+#uptime {
+  padding-top: 10px;
+}
+

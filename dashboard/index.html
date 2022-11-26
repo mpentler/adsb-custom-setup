@@ -1,11 +1,29 @@
 <html>
 
 <head>
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#666666">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="xpull.css" type="text/css">
+
+<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+<script src="xpull.js"></script>
+<script>
+// jquery document ready
+$(function () {
+  // Init xpull plugin
+  $('#content').xpull({
+    'callback': function () {
+      location.reload();
+    }       
+  });
+});
+</script>
+
 <meta name="apple-mobile-web-app-title" content="ADS-B Dashboard">
 <meta name="application-name" content="ADS-B Dashboard">
 <meta name="msapplication-TileColor" content="#da532c">
@@ -17,18 +35,38 @@ ADS-B Dashboard
 </title>
 </head>
 
-<body style="font-family: sans-serif">
-<h1>ADS-B Dashboard</h1>
+<body>
 
+<div class="container">
+  <div class="top-banner">
+    <h1><img src="/apple-touch-icon.png" width=100 height=100 style="vertical-align: middle">ADS-B Dashboard</h1>
+  </div>
+
+<div id="content">
+
+        <!-- Markup for xpull plugin -->
+        <div class="xpull">
+            <div class="xpull__start-msg">
+                <div class="xpull__start-msg-text">Pull Down &amp; Release to Refresh</div>
+                <div class="xpull__arrow"></div>
+            </div>
+            <div class="xpull__spinner">
+                <div class="xpull__spinner-circle"></div>
+            </div>
+        </div>
+        <!-- End Markup for xpull plugin -->
+
+<div id="uptime">
 Uptime:
- 18:00:01 up 18:10,  1 user,  load average: 0.44, 0.53, 0.60
+ 11:30:01 up 6 days, 11:40,  1 user,  load average: 0.58, 0.68, 0.72
+</div>
 
 <h2>Decoders/Stats</h2>
 <ul>
 <li>tar1090: 
 <a href="http://192.168.0.31/tar1090">Live View</a> |
 <a href="http://192.168.0.31/tar1090/?ptracks">
-Last 8h Tracks
+Last 24h Tracks
 </a>
 </li>
 <li>graphs1090: 
@@ -49,7 +87,12 @@ Last 8h Tracks
 <li>RadarBox: <a href="https://www.radarbox.com/stations/EXTRPI002487">Stats</a></li>
 </ul>
 
-<img src="stats.png">
+<img src="throttled.png">
+
+</div>
+
+</div>
+
 </body>
 
 </html>
