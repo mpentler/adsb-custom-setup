@@ -2,17 +2,17 @@
 
 <head>
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#666666">
-<link rel="stylesheet" href="style.css" type="text/css">
-<link rel="stylesheet" href="xpull.css" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#666666">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="xpull.css" type="text/css">
 
-<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
-<script src="xpull.js"></script>
-<script>
+  <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+  <script src="xpull.js"></script>
+  <script>
 // jquery document ready
 $(function () {
   // Init xpull plugin
@@ -52,22 +52,19 @@ let darksetting = localStorage.getItem('dark');
 document.addEventListener('DOMContentLoaded', () => {
     checkDark();
 });
-</script>
+  </script>
 
-<meta name="apple-mobile-web-app-title" content="ADS-B Dashboard">
-<meta name="application-name" content="ADS-B Dashboard">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-title" content="ADS-B Dashboard">
+  <meta name="application-name" content="ADS-B Dashboard">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-ADS-B Dashboard
-</title>
+  <title>ADS-B Dashboard</title>
 </head>
 
 <body>
 
-<div id="container">
   <div id="top-banner">
     <h1><img id="top-icon" class="light-icon"/>ADS-B Dashboard</h1>
   </div>
@@ -91,43 +88,41 @@ Uptime:
 Will update on first refresh...
     </div>
 
-<h2>Decoders/Stats</h2>
-<ul>
-<li>tar1090: 
-<a href="http://192.168.0.31/tar1090">Live View</a> |
-<a href="http://192.168.0.31/tar1090/?ptracks">
+    <h2>Decoders/Stats</h2>
+    <ul>
+      <li>tar1090: 
+      <a href="http://192.168.0.31/tar1090">Live View</a> |
+      <a href="http://192.168.0.31/tar1090/?ptracks">
 Last 24h Tracks
-</a>
-</li>
-<li>graphs1090: 
-<a href="http://192.168.0.31/graphs1090">Dashboard</a>
-</li>
-</ul>
+      </a>
+      </li>
+      <li>graphs1090: 
+      <a href="http://192.168.0.31/graphs1090">Dashboard</a>
+      </li>
+    </ul>
 
-<h2>Feeders</h2>
-<ul>
-<li>ADS-B Exchange: <a href="https://www.adsbexchange.com/myip/">Feed Status</a> |
-<a href="https://globe.adsbexchange.com/">Global View</a></li>
-<li>FlightAware: <a href="http://192.168.0.31/skyaware">PiAware Local</a> |
-<a href="https://uk.flightaware.com/adsb/stats/user/tehhustler">Stats</a></li>
-<li>FlightRadar 24: <a href="http://192.168.0.31:8754">Local Status</a> |
-<a href="https://www.flightradar24.com/account/feed-stats/?id=46158">Stats</a></li>
-<li>Plane Finder: <a href="http://192.168.0.31:30053">Local View/Stats</a></li>
-<li>OpenSky Network: <a href="https://opensky-network.org/receiver-profile?s=-1408231374">Stats</a></li>
-<li>RadarBox: <a href="https://www.radarbox.com/stations/EXTRPI002487">Stats</a></li>
-</ul>
+    <h2>Feeders</h2>
+    <ul>
+      <li>ADS-B Exchange: <a href="https://www.adsbexchange.com/myip/">Feed Status</a> |
+      <a href="https://globe.adsbexchange.com/">Global View</a></li>
+      <li>FlightAware: <a href="http://192.168.0.31/skyaware">PiAware Local</a> |
+      <a href="https://uk.flightaware.com/adsb/stats/user/tehhustler">Stats</a></li>
+      <li>FlightRadar 24: <a href="http://192.168.0.31:8754">Local Status</a> |
+      <a href="https://www.flightradar24.com/account/feed-stats/?id=46158">Stats</a></li>
+      <li>Plane Finder: <a href="http://192.168.0.31:30053">Local View/Stats</a></li>
+      <li>OpenSky Network: <a href="https://opensky-network.org/receiver-profile?s=-1408231374">Stats</a></li>
+      <li>RadarBox: <a href="https://www.radarbox.com/stations/EXTRPI002487">Stats</a></li>
+    </ul>
 
     <img src="/throttled.png"/>
 
     <button onclick="darkLightSwitch()">Dark/Light Switch</button>
 
     <div id="githublink">
-    <a href="https://github.com/mpentler/adsb-custom-setup/">GitHub Page</a>
+      <a href="https://github.com/mpentler/adsb-custom-setup/">GitHub Page</a>
     </div>
 
   </div>
-
-</div>
 
 </body>
 
