@@ -1,7 +1,7 @@
 # adsb-custom-setup
 My own personal setup scripts and modifications to a basic RPi ADS-B decoder/feeder, with an added web dashboard featuring with mobile compatibility (pull to refresh, dark/light mode).
 
-The dashboard currently updated every half hour - this can be changed in the stats.cron file before installation.
+The dashboard currently updated by default on the half hour - this can be changed in the stats.cron file before installation.
 
 ## Introduction
 This script will download various pieces of software for running an ADS-B decoder and feeder. Choices are given at most, but not all stages, and some configuration files are also adjusted.
