@@ -166,13 +166,17 @@ while true; do
   case $yn in
     [yY]* ) mkdir /var/www/html/adsbdashboard
     cp dashboard/* /var/www/html/adsbdashboard/*
+    apt-get install ansilove -y
+
     # add $ptrackshrs entry to web page
     sed -i "s/Last 8h Tracks/Last $ptrackshrs\h Tracks/" /var/www/html/adsbdashboard/index.html
+
     cp scripts/*.sh /home/pi/
-    apt-get install ansilove -y
+
     cp adsbdashboard.lighttpd /etc/lighttpd/conf-available/96-adsbdashboard.conf
     lighttpd-enable-mod adsbdashboard
     sudo systemctl restart lighttpd.service
+
     cp adsb-stats.cron /etc/cron.d/adsb_stats
     sudo systemctl restart cron ; break ;;
     [nN]* ) echo "skipping..." ; break ;;
