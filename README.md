@@ -19,3 +19,5 @@ Look at the scripts and edit anything else you want.
 `sudo adsb-install.sh`
 
 Follow the prompts as you go for choosing options and feeders. None of the scripts are very complex if you have a look at them, but as I made this for myself I'm not hugely interested in documenting things more than this right now, sorry!
+
+Then access http://ipaddress/adsbdashboard to view the dashboard. I have no knowledge of how to make it work on https, sorry.
