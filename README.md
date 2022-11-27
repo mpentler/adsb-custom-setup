@@ -1,5 +1,5 @@
 # adsb-custom-setup
-My own personal setup-from-scratch scripts and modifications to a basic headless RPi ADS-B decoder/feeder, with an added web dashboard featuring with mobile compatibility (pull to refresh, dark/light mode).
+My own personal setup-from-scratch scripts and modifications to a basic headless RPi ADS-B decoder/feeder, with an added web dashboard featuring mobile compatibility (pull to refresh, dark/light mode).
 
 The dashboard currently updated by default on the half hour - this can be changed in the stats.cron file before installation.
 
