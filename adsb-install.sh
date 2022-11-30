@@ -63,6 +63,8 @@ echo -e "enable_uart=0\ngpu_mem=16\nenable_tvout=0" >> /boot/config.txt
 # read -p "How high is the antenna above the ground in metres?: " antalt
 
 #install dump1090-fa, tar1090, and graphs1090 from wiedehopf's excellent scripts
+#so that I'm not just copying his install everything script, but shitter, i will add y/n choices here soon and store them for later
+#for instance - no need to configure software later that isn't installed
 echo "*** Installing dump1090-fa, graphs1090 and tar1090...\n"
 
 echo "Firstly, dump1090-fa"
