@@ -9,7 +9,8 @@ This script will download various pieces of software for running an ADS-B decode
 That last point is important: this WILL adjust system files and you should inspect the main adsb-install.sh before running it. There isn't much error-checking, if any.
 
 It will also install a web frontend for accessing everything and viewing all of the stats and traffic to the port 80 lighttpd server.
-![App Screenshot](https://i.imgur.com/wgOmN93.jpg "App Screenshot")
+
+<img src="https://i.imgur.com/wgOmN93.jpg" width="400">
 
 ## Installation
 Clone the repo first to your /home/pi folder (change the script if your username is something different) and then:
