@@ -2,7 +2,9 @@
 #ADS-B Feeder install script - run this after RPi first boot
 #ToDo: How to determine latest version of some feeder URLs before downloading - they are referenced by specific version number right now
 
-echo "*** Completing headless Raspbian setup tasks (settings config and software removal..."
+trap 'echo "[ERROR] Error in line $LINENO when executing: $BASH_COMMAND"' ERR
+
+echo "*** Completing headless Raspbian setup tasks (settings config and software removal...)"
 
 #disable HDMI output
 read -p "Disable HDMI in /etc/rc.local? (y/n): " yn
@@ -57,6 +59,8 @@ systemctl enable ssh.socket
 echo "Setting some /boot/config.txt options for headless operation..."
 echo -e "enable_uart=0\ngpu_mem=16\nenable_tvout=0" >> /boot/config.txt
 
+echo "*** Headless setup complete, now to install some software..."
+
 #gather some information to be used later (but not yet!)
 # read -p "What is the decimal X longitude coordinate of the antenna (to 4 decimal places)? :" loncoord
 # read -p "What is the decimal Y latidude coordinate of the antenna (to 4 decimal places)? :" latcoord
@@ -77,7 +81,7 @@ echo "Lastly, graphs1090"
 bash -c "$(curl -L -o - https://github.com/wiedehopf/graphs1090/raw/master/install.sh)"
 
 #install feeders - most of this is interactive unfortunately
-echo "*** Installing feeder software...\n"
+echo "*** Installing feeder software (confirm each one you want...\n"
 
 #ADSB Exchange
 read -p "Install ADSB Exchange? (y/n): " yn
@@ -163,7 +167,7 @@ read -p "How long would you like between graphs1090 redraws (in seconds)?: " dra
 sed -i "s/DRAW_INTERVAL=60/DRAW_INTERVAL=$drawinterval/" /etc/default/graphs1090
 
 #install web dashboard
-read -p "Install web dashboard at http://ip.address/adsbdashboard/ ?: " yn
+read -p "*** Installing web dashboard at http://ip.address/adsbdashboard/ ?: " yn
 while true; do
   case $yn in
     [yY]* ) mkdir /var/www/html/adsbdashboard
