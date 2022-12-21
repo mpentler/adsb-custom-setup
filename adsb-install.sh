@@ -66,7 +66,7 @@ echo "*** Headless setup complete, now to install some software..."
 # read -p "What is the decimal Y latidude coordinate of the antenna (to 4 decimal places)? :" latcoord
 # read -p "How high is the antenna above the ground in metres?: " antalt
 
-#install dump1090-fa, tar1090, and graphs1090 from wiedehopf's excellent scripts
+#install dump1090-fa, tar1090, graphs1090 and timelapse1090 from wiedehopf's excellent scripts
 #so that I'm not just copying his install everything script, but shitter, i will add y/n choices here soon and store them for later
 #for instance - no need to configure software later that isn't installed
 echo "*** Installing dump1090-fa, graphs1090 and tar1090...\n"
@@ -77,8 +77,11 @@ bash -c "$(curl -L -o - https://github.com/wiedehopf/adsb-scripts/raw/master/ins
 echo "Secondly, tar1090"
 bash -c "$(curl -L -o - https://github.com/wiedehopf/tar1090/raw/master/install.sh)"
 
-echo "Lastly, graphs1090"
+echo "Thirdly, graphs1090"
 bash -c "$(curl -L -o - https://github.com/wiedehopf/graphs1090/raw/master/install.sh)"
+
+echo "Lastly, timelapse1090"
+sudo bash -c "$(wget -q -O - https://raw.githubusercontent.com/wiedehopf/timelapse1090/master/install.sh)"
 
 #install feeders - most of this is interactive unfortunately
 echo "*** Installing feeder software (confirm each one you want...\n"
