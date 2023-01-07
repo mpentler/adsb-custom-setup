@@ -150,6 +150,18 @@ while true; do
   esac
 done
 
+#ADSBHub
+read -p "Inside ADSBHub (y/n)" yn
+while true; do
+  case $yn in
+    [yY]* ) cd /usr/bin
+    wget https://www.adsbhub.org/downloads/adsbhub.php --no-check-certificate -O adsbhub.sh
+    chmod 755 adsbhub.sh ; echo "ADSBHub install is a little involved, please finish this one manually!" ; break ;;
+    [nN]* ) echo "skipping..." ; break ;;
+    *) echo 'Invalid input' >&2 ;;
+  esac
+done
+
 echo "*** All feeders complete - remember to configure them all separately if required!\n"
 
 echo "*** Configuring some app-specific settings...\n"

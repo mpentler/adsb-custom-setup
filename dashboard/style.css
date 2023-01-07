@@ -12,10 +12,6 @@ html {
   text-align: center;
 }
 
-#uptime {
-  padding-top: 10px;
-}
-
 .light-icon {
   content:url("/apple-touch-icon.png");
 }

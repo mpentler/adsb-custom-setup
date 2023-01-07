@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
 
 <head>
 
@@ -28,7 +30,7 @@ function darkLightSwitch() {
     darksetting = 1;
     document.body.classList.add("dark-mode");
     document.getElementById("top-icon").classList.add("dark-icon");
-    document.getElementById("top-icon").classList.remove("light-icon");
+    docume_nt.getElementById("top-icon").classList.remove("light-icon");
   }
   else {
     darksetting = 0;
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <body>
 
   <div id="top-banner">
-    <h1><img id="top-icon" class="light-icon"/>ADS-B Dashboard</h1>
+    <h1><img id="top-icon" class="light-icon" alt="Application logo"  src="/"/>ADS-B Dashboard</h1>
   </div>
 
   <div id="content">
@@ -93,11 +95,16 @@ Will update on first refresh...
       <li>tar1090: 
       <a href="/tar1090">Live View</a> |
       <a href="/tar1090/?ptracks">
-Last 24h Tracks
+Last 8h Tracks
       </a>
       </li>
       <li>graphs1090:
       <a href="/graphs1090">Dashboard</a>
+      </li>
+      <li>timelapse1090:
+      <a href="/timelapse1090">
+Last 24h History
+      </a>
       </li>
     </ul>
 
@@ -112,14 +119,15 @@ Last 24h Tracks
       <li>Plane Finder: <a href="/planefinder">Local View/Stats</a></li>
       <li>OpenSky Network: <a href="https://opensky-network.org/receiver-profile?s=-1408231374">Stats</a></li>
       <li>RadarBox: <a href="https://www.radarbox.com/stations/EXTRPI002487">Stats</a></li>
+      <li>ADSBHub: <a href="https://www.adsbhub.org/station.php?id=3501">Stats</a></li>
     </ul>
 
-    <img src="/throttled.png"/>
+    <span class="throttledwifi"><img alt="WiFi signal/undervolt data" src="/throttled.png"/></span>
 
-    <div id="bottombar">
+    <span class="bottombar">
       <button onclick="darkLightSwitch()">Dark/Light Switch</button>
       <a href="https://github.com/mpentler/adsb-custom-setup/">GitHub Page</a>
-    </div>
+    </span>
 
   </div>
 
