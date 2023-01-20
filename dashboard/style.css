@@ -42,3 +42,7 @@ html {
 #bottombar {
   font-style: italic;
 }
+
+h2 + ul {
+  margin-top: -20px;
+}
